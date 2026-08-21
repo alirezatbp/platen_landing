@@ -1,0 +1,211 @@
+---
+import { siteConfig } from '../lib/site';
+
+const pathname = Astro.url.pathname;
+const panelUrl = siteConfig.panelUrl;
+const isHome = pathname === '/' || pathname === '';
+
+const links = [
+  { href: isHome ? '#how-it-works' : '/#how-it-works', label: 'How it works', match: null },
+  { href: isHome ? '#plans' : '/#plans', label: 'Plans', match: null },
+];
+---
+
+<header class="site-header sticky top-0 z-[60]" data-header data-home={isHome ? 'true' : 'false'}>
+  <div class="scroll-progress" aria-hidden="true">
+    <div class="scroll-progress__bar" data-scroll-progress></div>
+  </div>
+  <div class="site-header__bar mx-auto flex h-16 max-w-6xl items-center justify-between gap-6 px-5 sm:h-[4.75rem] sm:px-8">
+    <a href="/" class="group inline-flex items-center" aria-label="Platen home">
+      <img
+        src="/brand/logos/platen-wordmark.svg"
+        alt="Platen"
+        width="160"
+        height="80"
+        class="h-12 w-auto transition-opacity duration-200 group-hover:opacity-80"
+        decoding="async"
+      />
+    </a>
+
+    <nav class="flex items-center gap-1 sm:gap-0" aria-label="Primary">
+      <div class="hidden items-center md:flex">
+        {
+          links.map((link) => {
+            const active = link.match ? pathname.startsWith(link.match) : false;
+            return (
+              <a
+                href={link.href}
+                class:list={['site-nav-link', active && 'is-active']}
+                aria-current={active ? 'page' : undefined}
+              >
+                {link.label}
+              </a>
+            );
+          })
+        }
+      </div>
+
+      <div class="mx-2 hidden h-5 w-px bg-border/90 md:block" aria-hidden="true"></div>
+
+      <a href={panelUrl} class="site-nav-link site-nav-link--quiet">
+        Log in
+      </a>
+
+      <a href="/signup" class="site-cta ml-1 sm:ml-2">
+        Start free
+      </a>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    border-bottom: 1px solid transparent;
+    background: color-mix(in srgb, var(--color-bg) 72%, transparent);
+    backdrop-filter: blur(16px) saturate(1.2);
+    -webkit-backdrop-filter: blur(16px) saturate(1.2);
+    transition:
+      background-color 0.3s ease,
+      border-color 0.3s ease,
+      box-shadow 0.3s ease;
+  }
+
+  .scroll-progress {
+    position: absolute;
+    inset-inline: 0;
+    top: 0;
+    height: 2.5px;
+    z-index: 2;
+    overflow: hidden;
+    pointer-events: none;
+    background: color-mix(in srgb, var(--color-border) 45%, transparent);
+  }
+
+  .scroll-progress__bar {
+    height: 100%;
+    width: 100%;
+    transform-origin: left center;
+    transform: scaleX(0);
+    background: linear-gradient(
+      90deg,
+      var(--color-primary) 0%,
+      var(--color-primary-hover) 70%,
+      #5eead4 100%
+    );
+    will-change: transform;
+  }
+
+  .site-header[data-home='true']:not(.is-scrolled) {
+    background: color-mix(in srgb, var(--color-bg) 42%, transparent);
+    border-bottom-color: transparent;
+  }
+
+  .site-header.is-scrolled,
+  .site-header[data-home='false'] {
+    background: color-mix(in srgb, var(--color-bg) 92%, transparent);
+    border-bottom-color: color-mix(in srgb, var(--color-border) 85%, transparent);
+    box-shadow: 0 10px 30px -24px rgba(18, 21, 28, 0.35);
+  }
+
+  .site-nav-link {
+    position: relative;
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    padding: 0.55rem 0.85rem;
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    color: var(--color-muted);
+    transition: color 0.2s ease;
+  }
+
+  .site-nav-link:hover,
+  .site-nav-link.is-active {
+    color: var(--color-ink);
+  }
+
+  .site-nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0.85rem;
+    right: 0.85rem;
+    bottom: 0.2rem;
+    height: 1.5px;
+    border-radius: 1px;
+    background: var(--color-primary);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.22s ease;
+  }
+
+  .site-nav-link:hover::after,
+  .site-nav-link.is-active::after {
+    transform: scaleX(1);
+  }
+
+  .site-nav-link--quiet::after {
+    display: none;
+  }
+
+  .site-cta {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    background: var(--color-primary);
+    padding: 0.55rem 1.05rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    color: var(--color-on-primary);
+    box-shadow: 0 8px 20px -12px rgba(15, 118, 110, 0.75);
+    transition:
+      background-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .site-cta:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-1px);
+    box-shadow: 0 12px 24px -12px rgba(15, 118, 110, 0.8);
+  }
+</style>
+
+<script>
+  function initHeader() {
+    const header = document.querySelector('[data-header]');
+    const progress = document.querySelector('[data-scroll-progress]');
+    if (!(header instanceof HTMLElement)) return;
+
+    let ticking = false;
+
+    const update = () => {
+      header.classList.toggle('is-scrolled', window.scrollY > 12);
+
+      if (progress instanceof HTMLElement) {
+        const doc = document.documentElement;
+        const max = doc.scrollHeight - window.innerHeight;
+        const ratio = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+        progress.style.transform = `scaleX(${ratio})`;
+      }
+
+      ticking = false;
+    };
+
+    const onScroll = () => {
+      if (ticking) return;
+      ticking = true;
+      requestAnimationFrame(update);
+    };
+
+    update();
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+  }
+
+  initHeader();
+  document.addEventListener('astro:page-load', initHeader);
+</script>

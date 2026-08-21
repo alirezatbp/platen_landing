@@ -1,0 +1,59 @@
+---
+/**
+ * Guest experience — Free Glass Pills preview.
+ * Paid designs + AI stay as light copy (not a style gallery).
+ */
+import Reveal from '../Reveal.astro';
+import GlassPillsPreview from '../GlassPillsPreview.astro';
+---
+
+<section class="relative overflow-hidden border-t border-border/50" id="guests">
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-[radial-gradient(ellipse_80%_60%_at_85%_40%,color-mix(in_srgb,var(--color-tint)_55%,transparent),transparent_60%),linear-gradient(180deg,var(--color-bg),#eef2f5)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto grid max-w-6xl items-center gap-16 px-5 py-24 sm:px-8 sm:py-28 lg:grid-cols-[1fr_auto] lg:gap-20">
+    <Reveal>
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Guest experience</p>
+      <h2 class="font-display mt-3 text-3xl font-semibold tracking-tight text-ink sm:text-[2.5rem] sm:leading-tight">
+        Looks that fit your venue
+      </h2>
+      <p class="mt-5 max-w-md text-lg leading-relaxed text-muted">
+        Guests get a clean public menu on their phone — no app. Free ships with Glass Pills.
+      </p>
+      <p class="mt-5 max-w-md text-[0.95rem] leading-relaxed text-muted">
+        Paid unlocks more menu designs — and AI tools that help you build faster when you’re ready.
+      </p>
+      <a
+        href="#plans"
+        class="mt-8 inline-flex text-sm font-semibold text-primary transition-colors hover:text-primary-hover"
+      >
+        See what’s on Pro →
+      </a>
+    </Reveal>
+
+    <Reveal class="flex justify-center lg:justify-end">
+      <div class="guest-float">
+        <GlassPillsPreview />
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  @keyframes float-soft {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-8px);
+    }
+  }
+
+  .guest-float {
+    animation: float-soft 5.5s ease-in-out infinite;
+  }
+</style>

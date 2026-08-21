@@ -1,0 +1,555 @@
+---
+/**
+ * Plans — Free → Pro → Max, light theme, monthly/yearly toggle.
+ * Pro $10/mo · Max $30/mo (yearly ~20% off). Not sold yet for Pro/Max.
+ */
+import Reveal from '../Reveal.astro';
+
+type Feature = { label: string; included: boolean };
+
+const plans = [
+  {
+    key: 'free',
+    name: 'Free',
+    audience: 'One venue. Live QR menu. No card required.',
+    monthly: { amount: '0', suffix: '/ forever', note: 'Always free · no credit card' },
+    yearly: { amount: '0', suffix: '/ forever', note: 'Always free · no credit card' },
+    badge: 'Available now',
+    featured: true,
+    features: [
+      { label: '1 owner account', included: true },
+      { label: '1 branch · 1 section · 1 menu', included: true },
+      { label: '10 categories · 25 items · 50 images', included: true },
+      { label: 'Unlimited modifier groups', included: true },
+      { label: '1 menu style (Glass Pills)', included: true },
+      { label: '5,000 scans / month', included: true },
+      { label: 'AI assist', included: false },
+      { label: 'Multiple menu designs', included: false },
+    ] satisfies Feature[],
+    cta: { href: '/signup', label: 'Start free' },
+  },
+  {
+    key: 'pro',
+    name: 'Pro',
+    audience: 'More capacity, every design, and AI when you outgrow Free.',
+    monthly: { amount: '10', suffix: '/ month', note: 'Billed monthly · coming soon' },
+    yearly: { amount: '8', suffix: '/ month', note: '$96 billed yearly · save 20%' },
+    badge: null as string | null,
+    featured: false,
+    features: [
+      { label: '10 users', included: true },
+      { label: '5 branches · 20 sections · 20 menus', included: true },
+      { label: '100 categories · 500 items · 500 images', included: true },
+      { label: 'Unlimited modifier groups', included: true },
+      { label: '4 menu styles', included: true },
+      { label: 'Unlimited scans / month', included: true },
+      { label: 'AI assist', included: true },
+    ] satisfies Feature[],
+    cta: null as { href: string; label: string } | null,
+  },
+  {
+    key: 'max',
+    name: 'Max',
+    audience: 'Unlimited platform for multi-branch operations.',
+    monthly: { amount: '30', suffix: '/ month', note: 'Billed monthly · coming soon' },
+    yearly: { amount: '24', suffix: '/ month', note: '$288 billed yearly · save 20%' },
+    badge: null as string | null,
+    featured: false,
+    features: [
+      { label: 'Unlimited users', included: true },
+      { label: 'Unlimited branches · sections · menus', included: true },
+      { label: 'Unlimited categories · items · images', included: true },
+      { label: 'Unlimited modifier groups', included: true },
+      { label: 'All menu styles', included: true },
+      { label: 'Unlimited scans / month', included: true },
+      { label: 'AI assist', included: true },
+    ] satisfies Feature[],
+    cta: null as { href: string; label: string } | null,
+  },
+];
+---
+
+<section class="plans relative overflow-hidden border-t border-border/50" id="plans" data-billing="monthly">
+  <div class="plans__stage absolute inset-0 -z-10" aria-hidden="true">
+    <div class="plans__glow plans__glow--a"></div>
+    <div class="plans__glow plans__glow--b"></div>
+  </div>
+
+  <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <Reveal>
+      <div class="mx-auto max-w-2xl text-center">
+        <p class="plans__eyebrow">Plans</p>
+        <h2 class="plans__title font-display mt-4 text-[2.2rem] font-semibold leading-[1.08] tracking-tight sm:text-[2.85rem]">
+          Simple plans.<br class="hidden sm:block" />
+          <span class="plans__title-accent">Serious menus.</span>
+        </h2>
+        <p class="plans__sub mx-auto mt-5 max-w-lg text-base leading-relaxed sm:text-lg">
+          Start free tonight. Upgrade later for more capacity, designs, and AI.
+        </p>
+
+        <div class="plans__toggle mt-8" role="group" aria-label="Billing period">
+          <button type="button" class="plans__pill is-active" data-billing-btn="monthly">
+            Monthly
+          </button>
+          <button type="button" class="plans__pill" data-billing-btn="yearly">
+            Yearly
+            <span class="plans__save">Save 20%</span>
+          </button>
+        </div>
+      </div>
+    </Reveal>
+
+    <div class="plans__deck mt-14 grid gap-5 lg:mt-16 lg:grid-cols-3 lg:items-stretch lg:gap-5">
+      {
+        plans.map((plan, i) => (
+          <article
+            class:list={[
+              'plans__card reveal',
+              plan.featured ? 'plans__card--featured' : 'plans__card--base',
+            ]}
+            data-reveal
+            style={`--i: ${i}`}
+          >
+            {plan.badge && <span class="plans__ribbon">{plan.badge}</span>}
+
+            <div class="plans__card-body">
+              <header class="plans__head">
+                <h3 class="font-display text-[1.35rem] font-semibold tracking-tight">{plan.name}</h3>
+                <p class="plans__audience">{plan.audience}</p>
+              </header>
+
+              <div class="plans__price">
+                <div class="plans__price-row">
+                  <span class="plans__currency">$</span>
+                  <span
+                    class="plans__amount font-display"
+                    data-price-amount
+                    data-monthly={plan.monthly.amount}
+                    data-yearly={plan.yearly.amount}
+                  >
+                    {plan.monthly.amount}
+                  </span>
+                  <span
+                    class="plans__suffix"
+                    data-price-suffix
+                    data-monthly={plan.monthly.suffix}
+                    data-yearly={plan.yearly.suffix}
+                  >
+                    {plan.monthly.suffix}
+                  </span>
+                </div>
+                <p
+                  class="plans__note"
+                  data-price-note
+                  data-monthly={plan.monthly.note}
+                  data-yearly={plan.yearly.note}
+                >
+                  {plan.monthly.note}
+                </p>
+              </div>
+
+              {
+                plan.cta ? (
+                  <a href={plan.cta.href} class="plans__btn plans__btn--solid">
+                    {plan.cta.label}
+                    <span aria-hidden="true">→</span>
+                  </a>
+                ) : (
+                  <div class="plans__btn plans__btn--ghost" aria-disabled="true">
+                    Coming soon
+                  </div>
+                )
+              }
+
+              <ul class="plans__features">
+                {plan.features.map((f) => (
+                  <li class:list={!f.included && 'is-out'}>
+                    <span class:list={['plans__mark', f.included ? 'is-yes' : 'is-no']} aria-hidden="true">
+                      {f.included ? (
+                        <svg viewBox="0 0 16 16" fill="none">
+                          <path
+                            d="M3.2 8.3 6.4 11.4 12.8 4.6"
+                            stroke="currentColor"
+                            stroke-width="1.9"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                          />
+                        </svg>
+                      ) : (
+                        <svg viewBox="0 0 16 16" fill="none">
+                          <path
+                            d="M4.5 4.5 11.5 11.5M11.5 4.5 4.5 11.5"
+                            stroke="currentColor"
+                            stroke-width="1.7"
+                            stroke-linecap="round"
+                          />
+                        </svg>
+                      )}
+                    </span>
+                    <span>{f.label}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+
+    <Reveal class="mt-10 text-center">
+      <p class="plans__footnote">
+        Free is live now. Pro and Max pricing shown above — checkout opens when those tiers ship.
+      </p>
+    </Reveal>
+  </div>
+</section>
+
+<script>
+  const root = document.getElementById('plans');
+  if (root) {
+    const buttons = root.querySelectorAll('[data-billing-btn]');
+
+    const apply = (period) => {
+      root.dataset.billing = period;
+      buttons.forEach((btn) => {
+        btn.classList.toggle('is-active', btn.getAttribute('data-billing-btn') === period);
+      });
+
+      root.querySelectorAll('[data-price-amount]').forEach((el) => {
+        el.textContent = el.getAttribute(`data-${period}`) || '';
+      });
+      root.querySelectorAll('[data-price-suffix]').forEach((el) => {
+        el.textContent = el.getAttribute(`data-${period}`) || '';
+      });
+      root.querySelectorAll('[data-price-note]').forEach((el) => {
+        el.textContent = el.getAttribute(`data-${period}`) || '';
+      });
+    };
+
+    buttons.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const period = btn.getAttribute('data-billing-btn');
+        if (period === 'monthly' || period === 'yearly') apply(period);
+      });
+    });
+  }
+</script>
+
+<style>
+  .plans__stage {
+    background:
+      radial-gradient(ellipse 55% 40% at 12% 0%, color-mix(in srgb, var(--color-tint) 75%, transparent), transparent 70%),
+      radial-gradient(ellipse 45% 35% at 92% 18%, color-mix(in srgb, var(--color-primary) 8%, transparent), transparent 70%),
+      linear-gradient(180deg, #eef2f5 0%, var(--color-bg) 42%, #e9eef2 100%);
+  }
+
+  .plans__eyebrow {
+    font-size: 0.75rem;
+    font-weight: 650;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+  }
+
+  .plans__title {
+    color: var(--color-ink);
+  }
+
+  .plans__title-accent {
+    color: var(--color-primary);
+  }
+
+  .plans__sub {
+    color: var(--color-muted);
+  }
+
+  .plans__footnote {
+    font-size: 0.875rem;
+    color: var(--color-muted);
+  }
+
+  .plans__toggle {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.28rem;
+    border-radius: 9999px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 10px 28px -22px rgba(18, 21, 28, 0.35);
+  }
+
+  .plans__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    cursor: pointer;
+    border: 0;
+    border-radius: 9999px;
+    padding: 0.55rem 1rem;
+    font-family: var(--font-display);
+    font-size: 0.84rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    color: var(--color-muted);
+    background: transparent;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .plans__pill.is-active {
+    color: var(--color-on-primary);
+    background: var(--color-ink);
+    box-shadow: 0 8px 18px -12px rgba(18, 21, 28, 0.55);
+  }
+
+  .plans__save {
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-tint) 80%, white);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, var(--color-border));
+    border-radius: 9999px;
+    padding: 0.15rem 0.4rem;
+  }
+
+  .plans__pill.is-active .plans__save {
+    color: #042f2e;
+    background: #5eead4;
+    border-color: transparent;
+  }
+
+  .plans__glow {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(70px);
+    opacity: 0.7;
+  }
+
+  .plans__glow--a {
+    top: -6%;
+    left: 10%;
+    width: 26rem;
+    height: 16rem;
+    background: color-mix(in srgb, var(--color-tint) 80%, transparent);
+  }
+
+  .plans__glow--b {
+    top: 20%;
+    right: 4%;
+    width: 20rem;
+    height: 14rem;
+    background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+  }
+
+  .plans__card {
+    position: relative;
+    border-radius: 1.35rem;
+    transition:
+      transform 0.35s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.35s ease,
+      border-color 0.35s ease;
+    transition-delay: calc(var(--i, 0) * 0.05s);
+  }
+
+  .plans__card-body {
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    gap: 1.35rem;
+    padding: 1.7rem 1.5rem 1.6rem;
+  }
+
+  .plans__card--base {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    box-shadow: 0 18px 40px -32px rgba(18, 21, 28, 0.28);
+  }
+
+  .plans__card--featured {
+    z-index: 2;
+    background:
+      linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--color-tint) 45%, white) 0%,
+        var(--color-surface) 38%,
+        var(--color-surface) 100%
+      );
+    border: 1px solid color-mix(in srgb, var(--color-primary) 40%, var(--color-border));
+    box-shadow:
+      0 1px 2px rgba(18, 21, 28, 0.04),
+      0 0 0 1px color-mix(in srgb, var(--color-primary) 12%, transparent),
+      0 28px 56px -28px rgba(15, 118, 110, 0.45);
+  }
+
+  @media (min-width: 1024px) {
+    .plans__card--featured {
+      transform: translateY(-8px) scale(1.02);
+    }
+
+    .plans__card--featured:hover {
+      transform: translateY(-12px) scale(1.025);
+    }
+
+    .plans__card--base:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
+      box-shadow: 0 22px 44px -30px rgba(18, 21, 28, 0.35);
+    }
+  }
+
+  .plans__ribbon {
+    position: absolute;
+    top: 1.1rem;
+    right: 1.1rem;
+    z-index: 3;
+    padding: 0.32rem 0.65rem;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+  }
+
+  .plans__head h3 {
+    color: var(--color-ink);
+  }
+
+  .plans__audience {
+    margin-top: 0.55rem;
+    font-size: 0.9rem;
+    line-height: 1.55;
+    min-height: 2.8rem;
+    color: var(--color-muted);
+  }
+
+  .plans__price-row {
+    display: flex;
+    align-items: baseline;
+    gap: 0.2rem;
+    flex-wrap: wrap;
+  }
+
+  .plans__currency {
+    font-size: 1.35rem;
+    font-weight: 650;
+    color: var(--color-muted);
+  }
+
+  .plans__amount {
+    font-size: clamp(2.6rem, 5vw, 3.35rem);
+    font-weight: 650;
+    letter-spacing: -0.05em;
+    line-height: 0.95;
+    color: var(--color-ink);
+  }
+
+  .plans__card--featured .plans__amount {
+    color: var(--color-primary);
+  }
+
+  .plans__suffix {
+    margin-left: 0.25rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-muted);
+  }
+
+  .plans__note {
+    margin-top: 0.4rem;
+    font-size: 0.8rem;
+    color: var(--color-muted);
+  }
+
+  .plans__btn {
+    display: inline-flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    gap: 0.45rem;
+    border-radius: 9999px;
+    padding: 0.9rem 1.15rem;
+    font-size: 0.9rem;
+    font-weight: 650;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.2s ease,
+      color 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .plans__btn--solid {
+    cursor: pointer;
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: 0 14px 36px -16px rgba(15, 118, 110, 0.7);
+  }
+
+  .plans__btn--solid:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  .plans__btn--ghost {
+    color: var(--color-muted);
+    border: 1px solid var(--color-border);
+    background: color-mix(in srgb, var(--color-bg) 70%, white);
+  }
+
+  .plans__features {
+    display: flex;
+    flex-direction: column;
+    gap: 0.72rem;
+    margin-top: 0.35rem;
+    padding-top: 1.15rem;
+    border-top: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+  }
+
+  .plans__features li {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.7rem;
+    font-size: 0.9rem;
+    line-height: 1.4;
+    color: var(--color-ink);
+  }
+
+  .plans__features li.is-out {
+    color: color-mix(in srgb, var(--color-muted) 70%, transparent);
+  }
+
+  .plans__mark {
+    display: grid;
+    place-items: center;
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-top: 0.08rem;
+    flex-shrink: 0;
+    border-radius: 9999px;
+  }
+
+  .plans__mark svg {
+    width: 0.72rem;
+    height: 0.72rem;
+  }
+
+  .plans__mark.is-yes {
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+  }
+
+  .plans__mark.is-no {
+    color: var(--color-muted);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+  }
+</style>

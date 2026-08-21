@@ -1,0 +1,21 @@
+---
+import { siteConfig } from '../lib/site';
+
+const panelUrl = siteConfig.panelUrl;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="refresh" content={`0;url=${panelUrl}`} />
+    <meta name="robots" content="noindex" />
+    <title>Redirecting to login · Platen</title>
+    <link rel="canonical" href="/login" />
+  </head>
+  <body style="font-family: system-ui, sans-serif; padding: 2rem; color: #12151c;">
+    <p>Taking you to the Platen panel…</p>
+    <p>
+      <a href={panelUrl}>Continue to log in</a>
+    </p>
+  </body>
+</html>

@@ -1,0 +1,605 @@
+---
+/**
+ * How it works — Funnel 3-step + Soft UI Evolution
+ * (ui-ux-pro-max), kept on Platen Quiet Host tokens.
+ */
+import Reveal from '../Reveal.astro';
+
+const steps = [
+  {
+    n: '01',
+    title: 'Create your venue',
+    body: 'Free account, your restaurant, one branch — ready in minutes.',
+    hint: 'Signup',
+    visual: 'venue' as const,
+  },
+  {
+    n: '02',
+    title: 'Build the menu',
+    body: 'Sections, categories, items, and photos within Free limits.',
+    hint: 'Editor',
+    visual: 'menu' as const,
+    proNote: 'AI assist + more menu styles',
+  },
+  {
+    n: '03',
+    title: 'Share the QR',
+    body: 'Print it, post it — guests open the link. No app required.',
+    hint: 'Go live',
+    visual: 'qr' as const,
+  },
+];
+---
+
+<section class="how relative overflow-hidden border-t border-border/50" id="how-it-works">
+  <div class="how__wash pointer-events-none absolute inset-0 -z-10" aria-hidden="true"></div>
+
+  <div class="mx-auto max-w-6xl px-5 py-24 sm:px-8 sm:py-32">
+    <!-- Swiss-asymmetric intro -->
+    <Reveal>
+      <div class="how__intro">
+        <p class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">How it works</p>
+        <h2 class="font-display mt-3 text-[2.15rem] font-semibold leading-[1.08] tracking-tight text-ink sm:text-[2.75rem]">
+          From empty table<br class="hidden sm:block" /> to live menu
+        </h2>
+      </div>
+    </Reveal>
+
+    <!-- Funnel progress -->
+    <Reveal class="mt-12 sm:mt-14">
+      <ol class="how__progress" aria-label="Setup progress">
+        {
+          steps.map((step, i) => (
+            <li class="how__progress-item">
+              <span class="how__progress-dot" data-active={i === 0 ? 'true' : undefined}>
+                {step.n}
+              </span>
+              <span class="how__progress-label">{step.hint}</span>
+              {i < steps.length - 1 && <span class="how__progress-line" aria-hidden="true" />}
+            </li>
+          ))
+        }
+      </ol>
+    </Reveal>
+
+    <!-- Soft UI step panels -->
+    <ol class="how__grid mt-10 grid gap-5 sm:mt-12 sm:gap-6 lg:grid-cols-3">
+      {
+        steps.map((step, i) => (
+          <li
+            class="how__panel reveal"
+            data-reveal
+            style={`--how-i: ${i}`}
+          >
+            <div class="how__visual" aria-hidden="true">
+              {step.visual === 'venue' && (
+                <div class="mock mock--venue">
+                  <div class="mock__chrome">
+                    <span /><span /><span />
+                  </div>
+                  <p class="mock__eyebrow">New venue</p>
+                  <div class="mock__field">
+                    <span class="mock__label">Name</span>
+                    <span class="mock__value">Coastal Kitchen</span>
+                  </div>
+                  <div class="mock__field mock__field--soft">
+                    <span class="mock__label">Branch</span>
+                    <span class="mock__chip">Main</span>
+                  </div>
+                  <div class="mock__bar" />
+                </div>
+              )}
+              {step.visual === 'menu' && (
+                <div class="mock mock--menu">
+                  <div class="mock__pills">
+                    <span class="is-on">All</span>
+                    <span>Mains</span>
+                    <span>Drinks</span>
+                  </div>
+                  <div class="mock__row">
+                    <span class="mock__thumb" />
+                    <span class="mock__lines">
+                      <i /><i />
+                    </span>
+                    <span class="mock__price">4.5</span>
+                  </div>
+                  <div class="mock__row">
+                    <span class="mock__thumb mock__thumb--alt" />
+                    <span class="mock__lines">
+                      <i /><i />
+                    </span>
+                    <span class="mock__price">3.2</span>
+                  </div>
+                  <div class="mock__row mock__row--fade">
+                    <span class="mock__thumb" />
+                    <span class="mock__lines">
+                      <i /><i />
+                    </span>
+                    <span class="mock__price">2.8</span>
+                  </div>
+                </div>
+              )}
+              {step.visual === 'qr' && (
+                <div class="mock mock--qr">
+                  <div class="mock__qr-frame">
+                    <svg viewBox="0 0 64 64" class="mock__qr-svg" fill="currentColor">
+                      <rect x="4" y="4" width="22" height="22" rx="2" />
+                      <rect x="38" y="4" width="22" height="22" rx="2" />
+                      <rect x="4" y="38" width="22" height="22" rx="2" />
+                      <rect x="10" y="10" width="10" height="10" fill="white" />
+                      <rect x="44" y="10" width="10" height="10" fill="white" />
+                      <rect x="10" y="44" width="10" height="10" fill="white" />
+                      <rect x="38" y="38" width="8" height="8" />
+                      <rect x="50" y="38" width="8" height="8" />
+                      <rect x="38" y="50" width="8" height="8" />
+                      <rect x="50" y="50" width="4" height="4" />
+                      <rect x="30" y="30" width="4" height="4" />
+                      <rect x="30" y="18" width="4" height="8" />
+                      <rect x="18" y="30" width="8" height="4" />
+                    </svg>
+                  </div>
+                  <p class="mock__qr-caption">platen.app/coastal</p>
+                </div>
+              )}
+            </div>
+
+            <div class="how__body">
+              <p class="how__num font-display">{step.n}</p>
+              <h3 class="font-display mt-2 text-xl font-semibold tracking-tight text-ink">
+                {step.title}
+              </h3>
+              <p class="mt-2.5 text-[0.95rem] leading-relaxed text-muted">
+                {step.body}
+              </p>
+              {'proNote' in step && step.proNote && (
+                <p class="how__pro">
+                  <span class="how__pro-badge">Pro</span>
+                  <span>{step.proNote}</span>
+                </p>
+              )}
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <!-- Funnel CTA -->
+    <Reveal class="mt-10 sm:mt-12">
+      <div class="how__cta-band">
+        <div>
+          <p class="font-display text-lg font-semibold tracking-tight text-ink sm:text-xl">
+            Ready to take step one?
+          </p>
+          <p class="mt-1 text-sm text-muted">Free forever · No card · Live tonight</p>
+        </div>
+        <div class="flex flex-wrap items-center gap-3">
+          <a href="/signup" class="how__btn how__btn--primary cursor-pointer">
+            Start free
+          </a>
+          <a href="#plans" class="how__btn how__btn--ghost cursor-pointer">
+            See plans
+          </a>
+        </div>
+      </div>
+    </Reveal>
+  </div>
+</section>
+
+<style>
+  .how__wash {
+    background:
+      radial-gradient(
+        ellipse 65% 50% at 8% 0%,
+        color-mix(in srgb, var(--color-tint) 55%, transparent),
+        transparent 70%
+      ),
+      radial-gradient(
+        ellipse 45% 40% at 100% 100%,
+        color-mix(in srgb, var(--color-primary) 7%, transparent),
+        transparent 70%
+      ),
+      linear-gradient(180deg, #eef2f5 0%, var(--color-bg) 42%, #e9eef2 100%);
+  }
+
+  /* —— Progress (funnel) —— */
+  .how__progress {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .how__progress::-webkit-scrollbar {
+    display: none;
+  }
+
+  .how__progress-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    flex-shrink: 0;
+  }
+
+  .how__progress-dot {
+    display: grid;
+    place-items: center;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 9999px;
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: var(--color-primary);
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 22%, var(--color-border));
+    box-shadow: 0 2px 4px rgba(18, 21, 28, 0.04);
+  }
+
+  .how__progress-dot[data-active='true'] {
+    color: var(--color-on-primary);
+    background: var(--color-primary);
+    border-color: var(--color-primary);
+  }
+
+  .how__progress-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .how__progress-line {
+    width: clamp(1.5rem, 6vw, 3.5rem);
+    height: 1px;
+    margin-inline: 0.75rem;
+    background: linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-primary) 45%, transparent),
+      var(--color-border)
+    );
+  }
+
+  /* —— Soft UI panels —— */
+  .how__panel {
+    display: flex;
+    flex-direction: column;
+    border-radius: 0.75rem;
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-border) 85%, transparent);
+    box-shadow:
+      0 1px 2px rgba(18, 21, 28, 0.04),
+      0 12px 28px -18px rgba(18, 21, 28, 0.18);
+    overflow: hidden;
+    transition:
+      transform 0.25s cubic-bezier(0.22, 1, 0.36, 1),
+      box-shadow 0.25s ease,
+      border-color 0.25s ease;
+    transition-delay: calc(var(--how-i, 0) * 0.08s);
+  }
+
+  .how__panel:hover {
+    transform: translateY(-4px);
+    border-color: color-mix(in srgb, var(--color-primary) 28%, var(--color-border));
+    box-shadow:
+      0 2px 4px rgba(18, 21, 28, 0.04),
+      0 20px 40px -20px rgba(15, 118, 110, 0.35);
+  }
+
+  .how__visual {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 12.5rem;
+    flex-shrink: 0;
+    padding: 1.15rem 1.15rem 0.85rem;
+    background:
+      linear-gradient(
+        165deg,
+        color-mix(in srgb, var(--color-tint) 42%, #f8fafb) 0%,
+        #f3f6f8 100%
+      );
+    border-bottom: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  }
+
+  .how__visual .mock {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .how__body {
+    padding: 1.25rem 1.25rem 1.4rem;
+  }
+
+  .how__num {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    color: var(--color-primary);
+  }
+
+  .how__pro {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.85rem;
+    font-size: 0.8rem;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--color-muted);
+  }
+
+  .how__pro-badge {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+    padding: 0.15rem 0.45rem;
+    border-radius: 0.3rem;
+    font-family: var(--font-display);
+    font-size: 0.62rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-tint) 70%, white);
+    border: 1px solid color-mix(in srgb, var(--color-primary) 18%, var(--color-border));
+  }
+
+  /* —— Product mocks —— */
+  .mock {
+    border-radius: 0.65rem;
+    background: var(--color-surface);
+    border: 1px solid color-mix(in srgb, var(--color-border) 80%, transparent);
+    box-shadow: 0 8px 20px -14px rgba(18, 21, 28, 0.35);
+    padding: 0.85rem;
+  }
+
+  .mock__chrome {
+    display: flex;
+    gap: 0.3rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .mock__chrome span {
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 9999px;
+    background: var(--color-border);
+  }
+
+  .mock__eyebrow {
+    font-size: 0.62rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-primary);
+    margin-bottom: 0.55rem;
+  }
+
+  .mock__field {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    padding: 0.45rem 0.55rem;
+    border-radius: 0.4rem;
+    background: color-mix(in srgb, var(--color-bg) 80%, white);
+    border: 1px solid color-mix(in srgb, var(--color-border) 70%, transparent);
+  }
+
+  .mock__field + .mock__field {
+    margin-top: 0.4rem;
+  }
+
+  .mock__field--soft {
+    background: transparent;
+    border-style: dashed;
+  }
+
+  .mock__label {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-muted);
+  }
+
+  .mock__value {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .mock__chip {
+    font-size: 0.65rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    background: color-mix(in srgb, var(--color-tint) 70%, white);
+    padding: 0.15rem 0.45rem;
+    border-radius: 9999px;
+  }
+
+  .mock__bar {
+    margin-top: 0.65rem;
+    height: 0.45rem;
+    width: 42%;
+    border-radius: 9999px;
+    background: color-mix(in srgb, var(--color-primary) 55%, var(--color-tint));
+  }
+
+  .mock__pills {
+    display: flex;
+    gap: 0.35rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .mock__pills span {
+    font-size: 0.62rem;
+    font-weight: 600;
+    padding: 0.28rem 0.55rem;
+    border-radius: 9999px;
+    color: var(--color-muted);
+    background: color-mix(in srgb, var(--color-bg) 90%, white);
+    border: 1px solid var(--color-border);
+  }
+
+  .mock__pills span.is-on {
+    color: var(--color-on-primary);
+    background: #4338ca;
+    border-color: #4338ca;
+  }
+
+  .mock__row {
+    display: grid;
+    grid-template-columns: 1.85rem 1fr auto;
+    align-items: center;
+    gap: 0.55rem;
+    margin-bottom: 0.45rem;
+  }
+
+  .mock__row--fade {
+    opacity: 0.45;
+  }
+
+  .mock__thumb {
+    width: 1.85rem;
+    height: 1.85rem;
+    border-radius: 0.35rem;
+    background: linear-gradient(135deg, #99f6e4, #5eead4);
+  }
+
+  .mock__thumb--alt {
+    background: linear-gradient(135deg, #fda4af, #fb7185);
+  }
+
+  .mock__lines {
+    display: flex;
+    flex-direction: column;
+    gap: 0.28rem;
+  }
+
+  .mock__lines i {
+    display: block;
+    height: 0.28rem;
+    border-radius: 9999px;
+    background: var(--color-border);
+  }
+
+  .mock__lines i:first-child {
+    width: 72%;
+  }
+
+  .mock__lines i:last-child {
+    width: 48%;
+    opacity: 0.7;
+  }
+
+  .mock__price {
+    font-family: var(--font-display);
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--color-ink);
+  }
+
+  .mock--qr {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 1rem;
+  }
+
+  .mock__qr-frame {
+    width: 5.25rem;
+    height: 5.25rem;
+    padding: 0.45rem;
+    border-radius: 0.55rem;
+    color: var(--color-ink);
+    background: white;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 6px 16px -12px rgba(18, 21, 28, 0.4);
+  }
+
+  .mock__qr-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .mock__qr-caption {
+    font-family: var(--font-display);
+    font-size: 0.68rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--color-muted);
+  }
+
+  /* —— CTA band —— */
+  .how__cta-band {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 1.35rem 1.4rem;
+    border-radius: 0.75rem;
+    background:
+      linear-gradient(
+        105deg,
+        color-mix(in srgb, var(--color-tint) 55%, white),
+        color-mix(in srgb, var(--color-surface) 92%, var(--color-tint))
+      );
+    border: 1px solid color-mix(in srgb, var(--color-primary) 16%, var(--color-border));
+    box-shadow: 0 10px 28px -22px rgba(15, 118, 110, 0.45);
+  }
+
+  @media (min-width: 640px) {
+    .how__cta-band {
+      flex-direction: row;
+      align-items: center;
+      padding: 1.5rem 1.75rem;
+    }
+  }
+
+  .how__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    padding: 0.75rem 1.2rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .how__btn--primary {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: 0 12px 28px -16px rgba(15, 118, 110, 0.7);
+  }
+
+  .how__btn--primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+  }
+
+  .how__btn--ghost {
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 80%, transparent);
+    color: var(--color-ink);
+  }
+
+  .how__btn--ghost:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    color: var(--color-primary);
+  }
+</style>

@@ -1,0 +1,45 @@
+---
+import { siteConfig } from '../lib/site';
+
+const panelUrl = siteConfig.panelUrl;
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border bg-ink text-white">
+  <div class="mx-auto flex max-w-6xl flex-col gap-10 px-5 py-14 sm:px-8 sm:flex-row sm:items-start sm:justify-between">
+    <div class="max-w-sm">
+      <img
+        src="/brand/logos/platen-wordmark-on-dark.svg"
+        alt="Platen"
+        width="140"
+        height="70"
+        class="h-12 w-auto"
+        loading="lazy"
+        decoding="async"
+      />
+      <p class="mt-3 text-sm leading-relaxed text-white/65">
+        Digital menus for restaurants worldwide. Build once, share with a QR.
+      </p>
+    </div>
+
+    <div class="flex flex-wrap gap-x-12 gap-y-8 text-sm">
+      <div class="flex flex-col gap-2.5">
+        <p class="font-semibold text-white">Product</p>
+        <a href="/#plans" class="cursor-pointer text-white/65 transition-colors hover:text-tint">Plans</a>
+        <a href="/signup" class="cursor-pointer text-white/65 transition-colors hover:text-tint">Start free</a>
+        <a href={panelUrl} class="cursor-pointer text-white/65 transition-colors hover:text-tint">Log in</a>
+      </div>
+      <div class="flex flex-col gap-2.5">
+        <p class="font-semibold text-white">Legal</p>
+        <a href="/terms" class="cursor-pointer text-white/65 transition-colors hover:text-tint">Terms</a>
+        <a href="/privacy" class="cursor-pointer text-white/65 transition-colors hover:text-tint">Privacy</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-white/10">
+    <p class="mx-auto max-w-6xl px-5 py-4 text-xs text-white/45 sm:px-8">
+      © {year} Platen. All rights reserved.
+    </p>
+  </div>
+</footer>

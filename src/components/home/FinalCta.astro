@@ -1,0 +1,40 @@
+---
+import Reveal from '../Reveal.astro';
+---
+
+<section class="relative overflow-hidden border-t border-border/50" id="cta">
+  <div class="absolute inset-0 -z-20">
+    <picture>
+      <source srcset="/images/platen-hero-fit-02b.webp" type="image/webp" />
+      <img
+        src="/images/platen-hero-fit-02b.jpg"
+        alt=""
+        class="h-full w-full scale-105 object-cover object-[75%_45%] opacity-40"
+        loading="lazy"
+        decoding="async"
+      />
+    </picture>
+  </div>
+  <div
+    class="pointer-events-none absolute inset-0 -z-10 bg-[linear-gradient(180deg,rgba(244,246,248,0.92)_0%,rgba(244,246,248,0.88)_45%,rgba(244,246,248,0.95)_100%)]"
+    aria-hidden="true"
+  >
+  </div>
+
+  <div class="mx-auto max-w-3xl px-5 py-24 text-center sm:px-8 sm:py-32">
+    <Reveal>
+      <h2 class="font-display text-3xl font-semibold tracking-tight text-ink sm:text-4xl lg:text-[2.75rem] lg:leading-tight">
+        Ready when your kitchen is.
+      </h2>
+      <p class="mx-auto mt-5 max-w-md text-lg leading-relaxed text-muted">
+        Start Free, publish your QR menu, invite guests. Built for restaurants everywhere.
+      </p>
+      <a
+        href="/signup"
+        class="mt-10 inline-flex cursor-pointer rounded-lg bg-primary px-7 py-3.5 text-sm font-semibold text-on-primary shadow-[0_12px_32px_-14px_rgba(15,118,110,0.7)] transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-hover"
+      >
+        Start free
+      </a>
+    </Reveal>
+  </div>
+</section>

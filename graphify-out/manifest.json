@@ -1,0 +1,432 @@
+{
+  ".vscode/extensions.json": {
+    "mtime": 1784569550.0,
+    "ast_hash": "3adedb22d082dbd1ebb00b75d21403aa",
+    "semantic_hash": ""
+  },
+  ".vscode/launch.json": {
+    "mtime": 1784569550.0,
+    "ast_hash": "60493763dcbc2d109e57da86d997602a",
+    "semantic_hash": ""
+  },
+  "astro.config.mjs": {
+    "mtime": 1784694099.7044084,
+    "ast_hash": "ae492166b882c4ea591b5809eded3310",
+    "semantic_hash": ""
+  },
+  "package.json": {
+    "mtime": 1784689894.085634,
+    "ast_hash": "b749aae754fa898c7310fee7ec4a375f",
+    "semantic_hash": ""
+  },
+  "src/components/Footer.astro": {
+    "mtime": 1784699147.776129,
+    "ast_hash": "d452c7c45877f1f80be937201ffa9caf",
+    "semantic_hash": ""
+  },
+  "src/components/GlassPillsPreview.astro": {
+    "mtime": 1784698998.060001,
+    "ast_hash": "94328ffb376608b3b0009cb57ace1624",
+    "semantic_hash": ""
+  },
+  "src/components/Header.astro": {
+    "mtime": 1784699127.9882748,
+    "ast_hash": "17677c1ff36e541ed81c7d3af0fe81dc",
+    "semantic_hash": ""
+  },
+  "src/components/Reveal.astro": {
+    "mtime": 1784690252.1548314,
+    "ast_hash": "31cb7a7c58028d5cc07d9a3e0655a281",
+    "semantic_hash": ""
+  },
+  "src/components/Seo.astro": {
+    "mtime": 1784696753.2568045,
+    "ast_hash": "9b08c960ca6d8bed6780d456d0670929",
+    "semantic_hash": ""
+  },
+  "src/components/home/FinalCta.astro": {
+    "mtime": 1784696753.2360966,
+    "ast_hash": "f7f11e7a0f72160ae1ea65fd477e3311",
+    "semantic_hash": ""
+  },
+  "src/components/home/GuestPreview.astro": {
+    "mtime": 1784699119.655116,
+    "ast_hash": "ed0d9622d51371931aa3fb2930f81366",
+    "semantic_hash": ""
+  },
+  "src/components/home/Hero.astro": {
+    "mtime": 1784699129.0189655,
+    "ast_hash": "651d9e2a295e6788225b2950859734b0",
+    "semantic_hash": ""
+  },
+  "src/components/home/HowItWorks.astro": {
+    "mtime": 1784699133.9168153,
+    "ast_hash": "ce04f6a751cc4396bfdd97ea10c69e52",
+    "semantic_hash": ""
+  },
+  "src/layouts/BaseLayout.astro": {
+    "mtime": 1784698025.9660308,
+    "ast_hash": "741090f3df3e7cc14e8d9c9fa3f120de",
+    "semantic_hash": ""
+  },
+  "src/lib/site.ts": {
+    "mtime": 1784694036.7622497,
+    "ast_hash": "374362943ad12dff831282e396026091",
+    "semantic_hash": ""
+  },
+  "src/pages/brand.astro": {
+    "mtime": 1784696753.68212,
+    "ast_hash": "1081935277fa65be80435a94c3b04e9d",
+    "semantic_hash": ""
+  },
+  "src/pages/index.astro": {
+    "mtime": 1784699115.0829084,
+    "ast_hash": "e45787f021d9dc3521995ecaaba4b7da",
+    "semantic_hash": ""
+  },
+  "src/pages/login.astro": {
+    "mtime": 1784694089.271634,
+    "ast_hash": "4d5a9aa7e1759c3b07f5f784bd52db5d",
+    "semantic_hash": ""
+  },
+  "src/pages/pricing.astro": {
+    "mtime": 1784694071.00663,
+    "ast_hash": "6596dcc9039c4f8352a37da2f531aa3f",
+    "semantic_hash": ""
+  },
+  "src/pages/privacy.astro": {
+    "mtime": 1784694079.6731555,
+    "ast_hash": "b23c0a9d27c4987db8cd0af5299ad5be",
+    "semantic_hash": ""
+  },
+  "src/pages/signup.astro": {
+    "mtime": 1784694074.2617247,
+    "ast_hash": "e0d0427f5f906809e04e570e4c096180",
+    "semantic_hash": ""
+  },
+  "src/pages/terms.astro": {
+    "mtime": 1784694077.5263937,
+    "ast_hash": "ea1c44c6b18ddde7619044e4a54431ab",
+    "semantic_hash": ""
+  },
+  "tsconfig.json": {
+    "mtime": 1784689894.2077343,
+    "ast_hash": "435fd597d730817e9056f006911084dd",
+    "semantic_hash": ""
+  },
+  "AGENTS.md": {
+    "mtime": 1784689803.9199972,
+    "ast_hash": "4d944a80d98bf8891d5b10081a86d3e1",
+    "semantic_hash": ""
+  },
+  "CLAUDE.md": {
+    "mtime": 1784689803.9199972,
+    "ast_hash": "4d944a80d98bf8891d5b10081a86d3e1",
+    "semantic_hash": ""
+  },
+  "README.md": {
+    "mtime": 1784694103.9524846,
+    "ast_hash": "8657356aa61b0a229305505d238ac0a5",
+    "semantic_hash": ""
+  },
+  "public/robots.txt": {
+    "mtime": 1784694098.1610506,
+    "ast_hash": "61ec7169a24c0ef277c4c3a50fa7bb65",
+    "semantic_hash": ""
+  },
+  "Landing/public/images/dish-hammour.png": {
+    "mtime": 1784690576.6044085,
+    "ast_hash": "a144d7dab587b2b60188434742a698bf",
+    "semantic_hash": ""
+  },
+  "Landing/public/images/dish-lemon-mint.png": {
+    "mtime": 1784690605.574219,
+    "ast_hash": "f0ce5248905d1979c6e20b93ab53a34f",
+    "semantic_hash": ""
+  },
+  "Landing/public/images/dish-machboos.png": {
+    "mtime": 1784690624.7767553,
+    "ast_hash": "0c931da765ba91a330a9ca45cb1b9fd9",
+    "semantic_hash": ""
+  },
+  "Landing/public/images/hero-atmosphere.png": {
+    "mtime": 1784690513.8078551,
+    "ast_hash": "6043020ba2b418f014438e35c1ce8c4c",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-01-lettermark-512.png": {
+    "mtime": 1784694040.69,
+    "ast_hash": "cf99c8f2df4de03e425543e480760de9",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-01-lettermark.png": {
+    "mtime": 1784693850.4842753,
+    "ast_hash": "619e0320b68c80f7151153b6c57ab873",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-01-lettermark.webp": {
+    "mtime": 1784694040.67,
+    "ast_hash": "a63ce120944b64f5277462bc66babbf4",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-02-wordmark-512.png": {
+    "mtime": 1784694040.768,
+    "ast_hash": "710a56bb3d892cbe5f467a6f89803e51",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-02-wordmark.png": {
+    "mtime": 1784693877.4691658,
+    "ast_hash": "bd64054efdcc0f076c97554ea00ac3e6",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-02-wordmark.webp": {
+    "mtime": 1784694040.748,
+    "ast_hash": "a402d8546f7433e4896aca608300da60",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-03-combo-512.png": {
+    "mtime": 1784694040.845,
+    "ast_hash": "e08d4ee7098a0b170cf3533b22918a59",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-03-combo.png": {
+    "mtime": 1784693884.7056248,
+    "ast_hash": "cb5bef5e1e19eb915c85b6100cc314ff",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-03-combo.webp": {
+    "mtime": 1784694040.826,
+    "ast_hash": "3c18a93d64f5d7a3dc148fd287e29bb2",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-04-emblem-512.png": {
+    "mtime": 1784694040.928,
+    "ast_hash": "7122ba9c74cac2ec1eb23d678e59676e",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-04-emblem.png": {
+    "mtime": 1784693875.3809705,
+    "ast_hash": "ec002caeacd3c4d55af8da0746e35e47",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-04-emblem.webp": {
+    "mtime": 1784694040.907,
+    "ast_hash": "affc3980c8c6bc96a12e0fd5442623a1",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-wordmark-nav.png": {
+    "mtime": 1784694315.296,
+    "ast_hash": "88e774d1259d00ab36527ee05e71b5bf",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/logo-platen-wordmark-nav.webp": {
+    "mtime": 1784694315.272,
+    "ast_hash": "138bcfcc408ca31f8fb00a8d2fde525c",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/platen-wordmark-on-dark.svg": {
+    "mtime": 1784695593.0740862,
+    "ast_hash": "5804d677705b26c44995a2801a470fdf",
+    "semantic_hash": ""
+  },
+  "public/brand/logos/platen-wordmark.svg": {
+    "mtime": 1784695591.6142776,
+    "ast_hash": "4cb0f0a6a09be70aeb915544634849aa",
+    "semantic_hash": ""
+  },
+  "public/favicon.svg": {
+    "mtime": 1784694095.1279252,
+    "ast_hash": "f97cff17a1857e3957f9096c36c811f1",
+    "semantic_hash": ""
+  },
+  "public/images/dish-hammour.webp": {
+    "mtime": 1784690730.386,
+    "ast_hash": "9c8ef9b5d636cf32339224270a43612b",
+    "semantic_hash": ""
+  },
+  "public/images/dish-lemon-mint.webp": {
+    "mtime": 1784690730.438,
+    "ast_hash": "82b0c9f3b848fd81dd3fd6903c422547",
+    "semantic_hash": ""
+  },
+  "public/images/dish-machboos.webp": {
+    "mtime": 1784690730.415,
+    "ast_hash": "aae8402d927fdfa0c1387cabc221a782",
+    "semantic_hash": ""
+  },
+  "public/images/hero-atmosphere.jpg": {
+    "mtime": 1784696755.252,
+    "ast_hash": "1dee6e07c06028fb8acad3d71443db69",
+    "semantic_hash": ""
+  },
+  "public/images/hero-atmosphere.webp": {
+    "mtime": 1784696755.135,
+    "ast_hash": "ca58252db720cc3f2aa5215a76afeb0c",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-a.jpg": {
+    "mtime": 1784691722.66,
+    "ast_hash": "203a1993f194477fe32f887dbe6423bf",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-a.webp": {
+    "mtime": 1784691722.561,
+    "ast_hash": "e31430fda2a40d4231f5babd8bcc4078",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-b.jpg": {
+    "mtime": 1784691722.885,
+    "ast_hash": "a34656b095f93723e3e35d11d88618fe",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-b.webp": {
+    "mtime": 1784691722.798,
+    "ast_hash": "577eed6b2122fbbbaf6c19571b81600e",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-c.jpg": {
+    "mtime": 1784691723.146,
+    "ast_hash": "8a783c769f71502683b7be92efb44bae",
+    "semantic_hash": ""
+  },
+  "public/images/hero-option-c.webp": {
+    "mtime": 1784691723.047,
+    "ast_hash": "1352ab22ffdcee844d29cfd8e52dc57d",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-01.jpg": {
+    "mtime": 1784694040.101,
+    "ast_hash": "5d01c57845a9e71a78fbadd1e8bd783e",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-01.webp": {
+    "mtime": 1784694040.012,
+    "ast_hash": "7e621e6ce4dd57884d53577392965922",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-02.jpg": {
+    "mtime": 1784694040.363,
+    "ast_hash": "d6a12abfdc56befb46a5903609fc0457",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-02.webp": {
+    "mtime": 1784694040.261,
+    "ast_hash": "ec0dc6ab2e3cf478e5207ca8b1cc84e4",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-03.jpg": {
+    "mtime": 1784694040.619,
+    "ast_hash": "6cc1da6690121c990323f770d0e5d15e",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-03.webp": {
+    "mtime": 1784694040.518,
+    "ast_hash": "d864bf59fd4c0dc7010ddf040f71eaa9",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-04.jpg": {
+    "mtime": 1784696058.734,
+    "ast_hash": "ab214be54640038e3a0ccb3b476944d0",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-04.webp": {
+    "mtime": 1784696058.636,
+    "ast_hash": "e17398960ec529809234b9595eb14410",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-05.jpg": {
+    "mtime": 1784696058.969,
+    "ast_hash": "62bbec7eba9940adfce3d6c5f7eaa639",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-05.webp": {
+    "mtime": 1784696058.878,
+    "ast_hash": "da92243d87c4634ffc23524db2c3c834",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-01.jpg": {
+    "mtime": 1784696465.019,
+    "ast_hash": "79b72334d6323d6a43fbc21f8166aee4",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-01.png": {
+    "mtime": 1784696343.2643967,
+    "ast_hash": "c08dccfa35b3984c957a28703ebf1b97",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-01.webp": {
+    "mtime": 1784696464.906,
+    "ast_hash": "dcd56eb4c8f0ee9f0dd593451e4d478a",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02.jpg": {
+    "mtime": 1784696465.272,
+    "ast_hash": "49511c65231eace2a207b1aa816361e4",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02.png": {
+    "mtime": 1784696335.2599525,
+    "ast_hash": "f4b561c8243034839e9c8bfb725a4f7a",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02.webp": {
+    "mtime": 1784696465.165,
+    "ast_hash": "af9dfcdae4ce778a6fd394eb98fa0501",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02b.jpg": {
+    "mtime": 1784696755.252,
+    "ast_hash": "1dee6e07c06028fb8acad3d71443db69",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02b.png": {
+    "mtime": 1784696728.0500517,
+    "ast_hash": "00c41cf7a1114ad52538fc869d28274a",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-02b.webp": {
+    "mtime": 1784696755.135,
+    "ast_hash": "ca58252db720cc3f2aa5215a76afeb0c",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-03.jpg": {
+    "mtime": 1784696465.529,
+    "ast_hash": "78c027633a36aab9b6a8d66cc3084a11",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-03.png": {
+    "mtime": 1784696367.2391045,
+    "ast_hash": "f043ee4b1ea01d8a68f5e1536d9487cb",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-03.webp": {
+    "mtime": 1784696465.418,
+    "ast_hash": "bdfd48acc391d4c017dab59129947fa4",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-04.jpg": {
+    "mtime": 1784696465.791,
+    "ast_hash": "fbb1def6c5dfa6f23156ce88a2cad126",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-04.png": {
+    "mtime": 1784696384.6845999,
+    "ast_hash": "e47cf462b863f437f9703e0f86edc618",
+    "semantic_hash": ""
+  },
+  "public/images/platen-hero-fit-04.webp": {
+    "mtime": 1784696465.674,
+    "ast_hash": "42f03f033f5f02e5167a23d6a6161f8d",
+    "semantic_hash": ""
+  },
+  "public/og-default.svg": {
+    "mtime": 1784694095.4507594,
+    "ast_hash": "24135f28dd8174ab8eaa6effab5df433",
+    "semantic_hash": ""
+  },
+  "src/components/home/Plans.astro": {
+    "mtime": 1784699523.5508175,
+    "ast_hash": "abaeafae106a0498ae765fe3456baeda",
+    "semantic_hash": ""
+  }
+}

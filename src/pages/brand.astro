@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const logos = [
+  {
+    id: '01',
+    file: 'logo-platen-01-lettermark.webp',
+    title: 'Option 1 — Lettermark',
+    note: 'Plate / QR-inspired mark (experimental)',
+  },
+  {
+    id: '02',
+    file: 'logo-platen-02-wordmark.webp',
+    title: 'Option 2 — Wordmark',
+    note: 'Clean type + teal underline (live)',
+  },
+  {
+    id: '03',
+    file: 'logo-platen-03-combo.webp',
+    title: 'Option 3 — Combo',
+    note: 'Icon + Platen wordmark',
+  },
+  {
+    id: '04',
+    file: 'logo-platen-04-emblem.webp',
+    title: 'Option 4 — Emblem',
+    note: 'Teal badge + P monogram',
+  },
+];
+
+const heroes = [
+  { id: 'fit-02b', file: 'platen-hero-fit-02b.jpg', title: 'Fit 2b — Styled clean desk (live)' },
+  { id: 'fit-01', file: 'platen-hero-fit-01.jpg', title: 'Fit 1 — Upright phone, soft cafe' },
+  { id: 'fit-02', file: 'platen-hero-fit-02.jpg', title: 'Fit 2 — Flat phone, bright stone' },
+  { id: 'fit-03', file: 'platen-hero-fit-03.jpg', title: 'Fit 3 — Flat phone, soft dusk' },
+  { id: 'fit-04', file: 'platen-hero-fit-04.jpg', title: 'Fit 4 — Flat phone, wood table' },
+  { id: 'c', file: 'hero-option-c.jpg', title: 'hero-option-c' },
+  { id: '01', file: 'platen-hero-01.jpg', title: 'Hero 1 — Dusk table' },
+  { id: '02', file: 'platen-hero-02.jpg', title: 'Hero 2 — Cafe daylight' },
+  { id: '03', file: 'platen-hero-03.jpg', title: 'Hero 3 — Evening booth' },
+  { id: '04', file: 'platen-hero-04.jpg', title: 'Hero 4 — Clean cafe + clear menu' },
+  { id: '05', file: 'platen-hero-05.jpg', title: 'Hero 5 — Clean dusk alternative' },
+];
+---
+
+<BaseLayout
+  title="Brand options"
+  description="Internal Platen logo and hero picker."
+  canonicalPath="/brand"
+  noindex={true}
+>
+  <section class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-20">
+    <p class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Internal</p>
+    <h1 class="font-display mt-3 text-4xl font-semibold tracking-tight text-ink">Brand options</h1>
+    <p class="mt-3 max-w-xl text-muted">
+      Live site uses <span class="font-semibold text-ink">logo 2</span> + <span class="font-semibold text-ink">Fit 2b</span>.
+    </p>
+
+    <h2 class="font-display mt-14 text-2xl font-semibold text-ink">Logos</h2>
+    <div class="mt-6 grid gap-6 sm:grid-cols-2">
+      {
+        logos.map((logo) => (
+          <figure class="rounded-2xl border border-border bg-surface p-5">
+            <img
+              src={`/brand/logos/${logo.file}`}
+              alt={logo.title}
+              class="mx-auto h-48 w-auto object-contain"
+              loading="lazy"
+            />
+            <figcaption class="mt-4">
+              <p class="font-semibold text-ink">{logo.title}</p>
+              <p class="text-sm text-muted">{logo.note}</p>
+            </figcaption>
+          </figure>
+        ))
+      }
+    </div>
+
+    <h2 class="font-display mt-16 text-2xl font-semibold text-ink">Hero images</h2>
+    <div class="mt-6 grid gap-6">
+      {
+        heroes.map((hero) => (
+          <figure class="overflow-hidden rounded-2xl border border-border bg-surface">
+            <img
+              src={`/images/${hero.file}`}
+              alt={hero.title}
+              class="aspect-[16/9] w-full object-cover"
+              loading="lazy"
+            />
+            <figcaption class="px-5 py-4 font-semibold text-ink">{hero.title}</figcaption>
+          </figure>
+        ))
+      }
+    </div>
+  </section>
+</BaseLayout>

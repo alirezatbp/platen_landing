@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const freeRows = [
+  { area: 'Users', free: 'Owner only (no staff)' },
+  { area: 'Branches', free: '1' },
+  { area: 'Sections', free: '1' },
+  { area: 'Menus', free: '1' },
+  { area: 'Categories', free: '10' },
+  { area: 'Items', free: '25' },
+  { area: 'Images', free: '50' },
+  { area: 'Modifier groups', free: 'Unlimited' },
+  { area: 'Menu style', free: 'Glass Pills' },
+  { area: 'Scans / month', free: 'Soft meter (menu stays live)' },
+  { area: 'License', free: 'Free forever' },
+];
+---
+
+<BaseLayout
+  title="Pricing"
+  description="Platen Free forever for one venue. Pro and Max coming soon."
+  canonicalPath="/pricing"
+>
+  <section class="relative overflow-hidden">
+    <div
+      class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-72 bg-[radial-gradient(ellipse_70%_80%_at_20%_0%,color-mix(in_srgb,var(--color-tint)_70%,transparent),transparent_70%)]"
+      aria-hidden="true"
+    >
+    </div>
+
+    <div class="mx-auto max-w-6xl px-5 py-16 sm:px-8 sm:py-24">
+      <p class="text-xs font-semibold uppercase tracking-[0.16em] text-primary">Pricing</p>
+      <h1 class="font-display mt-3 max-w-2xl text-4xl font-semibold tracking-tight text-ink sm:text-5xl sm:leading-tight">
+        Simple plans for growing menus
+      </h1>
+      <p class="mt-5 max-w-xl text-lg leading-relaxed text-muted">
+        Start Free. Add more capacity when you need it.
+      </p>
+
+      <div class="mt-14 grid gap-5 lg:grid-cols-3">
+        <article
+          class="relative flex flex-col overflow-hidden rounded-2xl border border-primary/30 bg-surface p-7 shadow-[0_24px_50px_-32px_rgba(15,118,110,0.45)] ring-1 ring-primary/10"
+        >
+          <p class="font-display text-sm font-semibold text-primary">Free</p>
+          <p class="font-display mt-3 text-4xl font-semibold tracking-tight text-ink">Forever</p>
+          <p class="mt-2 text-sm text-muted">One venue. No card required.</p>
+          <a
+            href="/signup"
+            class="mt-8 inline-flex cursor-pointer justify-center rounded-lg bg-primary px-4 py-3 text-sm font-semibold text-on-primary transition-all duration-200 hover:-translate-y-0.5 hover:bg-primary-hover"
+          >
+            Start free
+          </a>
+        </article>
+
+        <article class="rounded-2xl border border-border bg-surface/90 p-7">
+          <p class="font-display text-sm font-semibold text-muted">Pro</p>
+          <p class="font-display mt-3 text-4xl font-semibold tracking-tight text-ink">Coming soon</p>
+          <p class="mt-3 text-sm leading-relaxed text-muted">
+            More capacity and menu styles. Details when we ship the tier — not sold yet.
+          </p>
+        </article>
+
+        <article class="rounded-2xl border border-border bg-surface/90 p-7">
+          <p class="font-display text-sm font-semibold text-muted">Max</p>
+          <p class="font-display mt-3 text-4xl font-semibold tracking-tight text-ink">Coming soon</p>
+          <p class="mt-3 text-sm leading-relaxed text-muted">
+            Full platform packaging for larger operations. Not available yet.
+          </p>
+        </article>
+      </div>
+
+      <div class="mt-20">
+        <h2 class="font-display text-2xl font-semibold tracking-tight text-ink">Free plan details</h2>
+        <p class="mt-2 text-sm text-muted">Exact limits match the product — what you see is what you get.</p>
+
+        <div class="mt-8 overflow-hidden rounded-2xl border border-border bg-surface">
+          <table class="w-full min-w-[28rem] text-left text-sm">
+            <thead>
+              <tr class="border-b border-border bg-bg/90">
+                <th class="px-5 py-3.5 font-semibold text-ink">Area</th>
+                <th class="px-5 py-3.5 font-semibold text-ink">Free</th>
+              </tr>
+            </thead>
+            <tbody>
+              {
+                freeRows.map((row) => (
+                  <tr class="border-b border-border last:border-0">
+                    <td class="px-5 py-3.5 font-medium text-ink">{row.area}</td>
+                    <td class="px-5 py-3.5 text-muted">{row.free}</td>
+                  </tr>
+                ))
+              }
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <p class="mt-10 max-w-2xl text-sm leading-relaxed text-muted">
+        Self-serve signup wires next. Until then,
+        <a href="/signup" class="font-medium text-primary hover:underline">Start free</a>
+        shows the form shell — beta venues are still provisioned by our team.
+      </p>
+    </div>
+  </section>
+</BaseLayout>

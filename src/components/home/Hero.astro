@@ -1,0 +1,241 @@
+---
+/**
+ * Full-bleed product atmosphere hero.
+ * Same hero image — elevated composition, type, overlay, and motion.
+ */
+---
+
+<section class="hero relative isolate flex min-h-[min(94vh,58rem)] flex-col overflow-hidden">
+  <!-- Photographic plane -->
+  <div class="hero-media absolute inset-0 -z-20" aria-hidden="true">
+    <picture>
+      <source srcset="/images/platen-hero-fit-02b.webp" type="image/webp" />
+      <img
+        src="/images/platen-hero-fit-02b.jpg"
+        alt=""
+        width="1920"
+        height="1080"
+        class="hero-media__img h-full w-full object-cover object-[78%_42%] sm:object-[74%_40%] lg:object-[72%_38%]"
+        fetchpriority="high"
+        decoding="async"
+      />
+    </picture>
+  </div>
+
+  <!-- Layered washes: keep photo vivid on the right, crisp type on the left -->
+  <div class="pointer-events-none absolute inset-0 -z-10" aria-hidden="true">
+    <div class="hero-wash hero-wash--base absolute inset-0"></div>
+    <div class="hero-wash hero-wash--edge absolute inset-0"></div>
+    <div class="hero-wash hero-wash--vignette absolute inset-0"></div>
+  </div>
+
+  <div class="relative mx-auto flex w-full max-w-6xl flex-1 flex-col justify-center px-5 pb-20 pt-28 sm:px-8 sm:pb-24 sm:pt-32">
+    <div class="hero-copy max-w-[36rem]">
+      <div class="hero-copy__brand flex items-center gap-3">
+        <span class="hero-copy__rule" aria-hidden="true"></span>
+        <p class="font-display text-sm font-semibold uppercase tracking-[0.22em] text-primary sm:text-[0.95rem]">
+          Platen
+        </p>
+      </div>
+
+      <h1 class="hero-copy__title font-display mt-6 text-[2.75rem] font-semibold leading-[1.02] tracking-[-0.035em] text-ink sm:text-5xl lg:text-[3.85rem] lg:leading-[1.01]">
+        Your menu.<br />
+        One QR.<br class="sm:hidden" />
+        <span class="text-primary"> Live tonight.</span>
+      </h1>
+
+      <p class="hero-copy__sub mt-6 max-w-[28rem] text-[1.05rem] leading-[1.65] text-muted sm:text-xl sm:leading-[1.6]">
+        Digital menus for restaurants worldwide — build in minutes, share with a scan.
+      </p>
+
+      <div class="hero-copy__actions mt-10 flex flex-wrap items-center gap-3">
+        <a href="/signup" class="hero-btn hero-btn--primary">
+          Start free
+        </a>
+        <a href="#plans" class="hero-btn hero-btn--ghost">
+          See plans
+        </a>
+      </div>
+
+      <p class="hero-copy__meta mt-8 text-sm tracking-wide text-muted/90">
+        Free forever · No card
+      </p>
+    </div>
+  </div>
+
+  <!-- Soft exit into the next section -->
+  <div class="pointer-events-none absolute inset-x-0 bottom-0 h-28 bg-gradient-to-t from-bg via-bg/70 to-transparent" aria-hidden="true"></div>
+
+  <a
+    href="#how-it-works"
+    class="hero-scroll absolute bottom-7 left-1/2 z-10 hidden -translate-x-1/2 flex-col items-center gap-2 text-[0.7rem] font-medium uppercase tracking-[0.18em] text-muted/80 transition-colors hover:text-primary sm:flex"
+  >
+    <span>Explore</span>
+    <span class="hero-scroll__line" aria-hidden="true"></span>
+  </a>
+</section>
+
+<style>
+  .hero-media__img {
+    transform: scale(1.06);
+    animation: hero-ken 1.4s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  .hero-wash--base {
+    background:
+      linear-gradient(
+        102deg,
+        rgba(244, 246, 248, 0.98) 0%,
+        rgba(244, 246, 248, 0.94) 28%,
+        rgba(244, 246, 248, 0.72) 44%,
+        rgba(244, 246, 248, 0.28) 58%,
+        rgba(244, 246, 248, 0.04) 72%,
+        transparent 82%
+      );
+  }
+
+  .hero-wash--edge {
+    background:
+      linear-gradient(
+        180deg,
+        rgba(18, 21, 28, 0.22) 0%,
+        transparent 18%,
+        transparent 78%,
+        rgba(18, 21, 28, 0.28) 100%
+      );
+  }
+
+  .hero-wash--vignette {
+    background:
+      radial-gradient(
+        ellipse 55% 70% at 18% 48%,
+        rgba(244, 246, 248, 0.55) 0%,
+        transparent 70%
+      );
+  }
+
+  .hero-copy__rule {
+    display: block;
+    width: 2rem;
+    height: 1.5px;
+    background: var(--color-primary);
+    transform-origin: left center;
+    animation: hero-rule 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.15s both;
+  }
+
+  .hero-copy__brand {
+    animation: hero-rise 0.7s cubic-bezier(0.22, 1, 0.36, 1) 0.05s both;
+  }
+
+  .hero-copy__title {
+    animation: hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.12s both;
+  }
+
+  .hero-copy__sub {
+    animation: hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.2s both;
+  }
+
+  .hero-copy__actions {
+    animation: hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.28s both;
+  }
+
+  .hero-copy__meta {
+    animation: hero-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) 0.36s both;
+  }
+
+  .hero-btn {
+    display: inline-flex;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    border-radius: 0.55rem;
+    padding: 0.9rem 1.4rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    transition:
+      background-color 0.2s ease,
+      border-color 0.2s ease,
+      color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .hero-btn--primary {
+    background: var(--color-primary);
+    color: var(--color-on-primary);
+    box-shadow: 0 14px 36px -16px rgba(15, 118, 110, 0.75);
+  }
+
+  .hero-btn--primary:hover {
+    background: var(--color-primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 18px 40px -16px rgba(15, 118, 110, 0.85);
+  }
+
+  .hero-btn--ghost {
+    border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
+    background: color-mix(in srgb, var(--color-surface) 78%, transparent);
+    color: var(--color-ink);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .hero-btn--ghost:hover {
+    border-color: color-mix(in srgb, var(--color-primary) 40%, transparent);
+    color: var(--color-primary);
+  }
+
+  .hero-scroll__line {
+    display: block;
+    width: 1px;
+    height: 2rem;
+    background: linear-gradient(to bottom, var(--color-primary), transparent);
+    animation: hero-scroll-pulse 1.8s ease-in-out infinite;
+  }
+
+  @keyframes hero-ken {
+    from {
+      transform: scale(1.1);
+      opacity: 0.65;
+    }
+    to {
+      transform: scale(1.06);
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-rise {
+    from {
+      opacity: 0;
+      transform: translateY(18px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes hero-rule {
+    from {
+      transform: scaleX(0);
+      opacity: 0;
+    }
+    to {
+      transform: scaleX(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes hero-scroll-pulse {
+    0%,
+    100% {
+      opacity: 0.35;
+      transform: scaleY(0.85);
+    }
+    50% {
+      opacity: 1;
+      transform: scaleY(1);
+    }
+  }
+</style>
