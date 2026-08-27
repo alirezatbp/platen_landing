@@ -1,6 +1,6 @@
 # Platen Landing
 
-Astro marketing site for **getplaten.com** (signup + discovery). Admin CMS stays on `panel.*`.
+Astro marketing site for **getplaten.com** (signup + discovery). Admin CMS stays on `dashboard.getplaten.com`.
 
 **Brand:** Platen · **Domain:** getplaten.com  
 **Plans:** [`Landing/LANDING_ENHANCEMENTS.md`](./LANDING_ENHANCEMENTS.md) · product: [`docs/APP_DOCUMENTATION.md`](../docs/APP_DOCUMENTATION.md)
@@ -38,3 +38,17 @@ Open http://localhost:2083/brand to compare logo + hero options.
 | `npm run dev` | Local dev server |
 | `npm run build` | Production SSG → `dist/` |
 | `npm run preview` | Preview build |
+
+## Production deploy (aaPanel)
+
+GitHub Actions (`.github/workflows/deploy.yml`) builds on `main` (or **Run workflow**) and rsyncs `dist/` to `/www/wwwroot/getplaten.com`.
+
+Set these secrets on the Landing repo:
+
+| Secret | Value |
+|--------|--------|
+| `PUBLIC_SITE_URL` | `https://getplaten.com` |
+| `PUBLIC_PANEL_URL` | `https://dashboard.getplaten.com` |
+| `PUBLIC_API_BASE_URL` | `https://api.getplaten.com/api` |
+| `DEPLOY_KEY` | Deployer’s private SSH key |
+| `SERVER_IP` | aaPanel server IP |

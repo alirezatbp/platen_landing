@@ -1,0 +1,49 @@
+name: Deploy to aaPanel
+
+on:
+  push:
+    branches: [ "main" ]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: npm install
+
+      # Production env baked into the Astro SSG build.
+      # Secrets:
+      #   PUBLIC_SITE_URL       → https://getplaten.com
+      #   PUBLIC_PANEL_URL      → https://dashboard.getplaten.com
+      #   PUBLIC_API_BASE_URL   → https://api.getplaten.com/api
+      - name: Create .env.production file
+        run: |
+          echo "PUBLIC_SITE_URL=${{ secrets.PUBLIC_SITE_URL }}" > .env.production
+          echo "PUBLIC_PANEL_URL=${{ secrets.PUBLIC_PANEL_URL }}" >> .env.production
+          echo "PUBLIC_API_BASE_URL=${{ secrets.PUBLIC_API_BASE_URL }}" >> .env.production
+
+      - name: Build production files
+        run: npm run build
+
+      - name: Install rsync
+        run: sudo apt-get install -y rsync
+
+      - name: Deploy files via rsync
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.DEPLOY_KEY }}" > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
+
+          ssh-keyscan -H ${{ secrets.SERVER_IP }} >> ~/.ssh/known_hosts
+
+          rsync -avz --delete dist/ deployer@${{ secrets.SERVER_IP }}:/www/wwwroot/getplaten.com
