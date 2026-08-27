@@ -4,7 +4,6 @@ import { siteConfig } from '../lib/site';
 
 const apiBaseUrl = siteConfig.apiBaseUrl;
 const panelUrl = siteConfig.panelUrl;
-const token = Astro.url.searchParams.get('token') || '';
 ---
 
 <BaseLayout
@@ -21,13 +20,13 @@ const token = Astro.url.searchParams.get('token') || '';
 
     <div id="verify-status" class="mt-8 rounded-xl border border-border bg-surface p-5" role="status">
       <p id="verify-message" class="text-sm leading-relaxed text-muted">
-        {token ? 'Verifying your email…' : 'Missing verification link. Check your email and try again.'}
+        Verifying your email…
       </p>
       <a
         id="verify-login"
         href={panelUrl}
         class="mt-6 inline-flex w-full items-center justify-center rounded-lg bg-primary px-4 py-3.5 text-sm font-semibold text-on-primary transition hover:bg-primary-hover"
-        style={token ? 'display:none' : undefined}
+        style="display:none"
       >
         Continue to log in
       </a>
@@ -41,11 +40,20 @@ const token = Astro.url.searchParams.get('token') || '';
   </section>
 </BaseLayout>
 
-<script define:vars={{ apiBaseUrl, token }}>
+<script define:vars={{ apiBaseUrl }}>
   async function runVerify() {
     const messageEl = document.getElementById('verify-message');
     const loginEl = document.getElementById('verify-login');
-    if (!token) return;
+    const params = new URLSearchParams(window.location.search);
+    const token = (params.get('token') || '').trim();
+
+    if (!token) {
+      if (messageEl) {
+        messageEl.textContent = 'Missing verification link. Check your email and try again.';
+      }
+      if (loginEl) loginEl.style.display = 'inline-flex';
+      return;
+    }
 
     try {
       const res = await fetch(`${apiBaseUrl}/auth/verify-email`, {
